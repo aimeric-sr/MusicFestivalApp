@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct MusicFestivalAppApp: App {
+struct MusicFestivalApp: App {
     var body: some Scene {
         WindowGroup {
             LoginView()
