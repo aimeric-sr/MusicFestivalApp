@@ -11,6 +11,8 @@
 		A882D49E27639110000D71F2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D49D27639110000D71F2 /* ContentView.swift */; };
 		A882D4A027639111000D71F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A882D49F27639111000D71F2 /* Assets.xcassets */; };
 		A882D4A327639111000D71F2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A882D4A227639111000D71F2 /* Preview Assets.xcassets */; };
+		A882D4B127639157000D71F2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D4AE27639157000D71F2 /* LoginViewModel.swift */; };
+		A882D4B227639157000D71F2 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D4B027639157000D71F2 /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		A882D49D27639110000D71F2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A882D49F27639111000D71F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A882D4A227639111000D71F2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A882D4AE27639157000D71F2 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A882D4B027639157000D71F2 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 		A882D49A27639110000D71F2 /* MusicFestivalApp */ = {
 			isa = PBXGroup;
 			children = (
+				A882D4AF27639157000D71F2 /* Services */,
+				A882D4AD27639157000D71F2 /* ViewModels */,
 				A882D49B27639110000D71F2 /* MusicFestivalAppApp.swift */,
 				A882D49D27639110000D71F2 /* ContentView.swift */,
 				A882D49F27639111000D71F2 /* Assets.xcassets */,
@@ -65,6 +71,24 @@
 				A882D4A227639111000D71F2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A882D4AD27639157000D71F2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A882D4AE27639157000D71F2 /* LoginViewModel.swift */,
+			);
+			name = ViewModels;
+			path = "../../../../../../../Downloads/MusicFestivalApp-main/MusicFestivalApp/ViewModels";
+			sourceTree = "<group>";
+		};
+		A882D4AF27639157000D71F2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A882D4B027639157000D71F2 /* WebService.swift */,
+			);
+			name = Services;
+			path = "../../../../../../../Downloads/MusicFestivalApp-main/MusicFestivalApp/Services";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +163,8 @@
 			files = (
 				A882D49E27639110000D71F2 /* ContentView.swift in Sources */,
 				A882D49C27639110000D71F2 /* MusicFestivalAppApp.swift in Sources */,
+				A882D4B227639157000D71F2 /* WebService.swift in Sources */,
+				A882D4B127639157000D71F2 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
