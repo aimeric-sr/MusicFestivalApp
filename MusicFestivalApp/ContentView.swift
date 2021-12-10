@@ -31,7 +31,7 @@ struct ContentView: View {
                 }
             }
             HStack{
-                Button("Get Accounts"){
+                Button("Get Artists"){
                     
                 }
                 .padding()
