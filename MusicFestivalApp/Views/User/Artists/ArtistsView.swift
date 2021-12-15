@@ -32,19 +32,21 @@ struct ArtistsView: View {
             .task{
                 await artistVM.getArtists()
             }
-            Button("refresh"){
-                refreshArtists()
+            .alert("Error",
+                   isPresented: $artistVM.hasError,
+                   presenting: artistVM.state) {detail in
+                Button("Retry"){
+                    Task {
+                      await artistVM.getArtists()
+                    }
+                }
+            } message : {detail in
+                if case let .failed(error) = detail {
+                    Text(error.localizedDescription)
+                }
             }
         }
     }
-    
-    func refreshArtists() {
-      Task {
-        await artistVM.getArtists()
-        print("refresh")
-      }
-    }
-    
 }
 
 struct ArtistsView_Previews: PreviewProvider {
