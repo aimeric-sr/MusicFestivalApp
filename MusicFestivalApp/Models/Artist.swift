@@ -8,8 +8,8 @@
 import Foundation
 
 struct Artist : Codable {
-    var id: UUID
-    var name: String
-    var nationality: String
-    var music_styles: String
+    let id: UUID
+    let name: String
+    let nationality: String
+    let music_styles: String
 }

@@ -8,9 +8,9 @@
 import Foundation
 
 struct Event : Codable {
-    var id: UUID
-    var name: String
-    var location: String
-    var started_date: Date
-    var finish_date: Date
+    let id: UUID
+    let name: String
+    let location: String
+    let started_date: Date
+    let finish_date: Date
 }

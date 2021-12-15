@@ -8,52 +8,36 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var loginVM = LoginViewModel()
-    @StateObject private var artistListVM = ArtistListViewModel()
+    @StateObject private var loginVM = LoginViewModelImpl()
+    @StateObject private var artistListVM = ArtistListViewModel(service: ArtistService())
     
     var body: some View {
-        NavigationView{
-            VStack{
+        VStack(){
+            ZStack{
                 Form{
-                    HStack{
-                        Spacer()
-                        Image(systemName: loginVM.isAuthenticated ? "lock.fill" : "lock.open")
-                    }
-                    TextField("Username", text: $loginVM.username)
-                    TextField("Password", text: $loginVM.password)
-                    
+                    Section(header: Text("Se connecter")){
+                        TextField("Username", text: $loginVM.username)
+                    }.padding(10)
+                    Section{
+                        TextField("Password", text: $loginVM.password)
+                    }.padding(10)
                 }
-                HStack{
+                
+                HStack(spacing: 60){
                     Button("login"){
                         loginVM.login()
-                    }.padding()
+                    }.frame(width: 100, height: 40)
+                        .background(.blue)
+                        .cornerRadius(10)
+                        .buttonStyle(.plain)
                     Button("sign out"){
-                        print("sign out pressed")
                         loginVM.signOut()
-                    }.padding()
-                }
-                VStack{
-                    Spacer()
-                    if(loginVM.isAuthenticated){
-                        List(artistListVM.artists, id:\.id){ artist in
-                            HStack{
-                                Text("\(artist.id)")
-                                Text("\(artist.name)")
-                                Text("\(artist.nationality)")
-                                Text("\(artist.musicStyles)")
-                            }
-                        }
-                    }
-                    Spacer()
-                    Button("Get Artists"){
-                        artistListVM.getAllArtists()
-                    }
-                    .padding()
-                    .background(.blue)
-                    .cornerRadius(10)
-                    .foregroundColor(.white)
-                }
-            }.navigationTitle("Login")
+                    }.frame(width: 100, height: 40)
+                        .background(.blue)
+                        .cornerRadius(10)
+                        .buttonStyle(.plain)
+                }.frame(maxWidth: .infinity)
+            }
         }
     }
 }
@@ -61,5 +45,6 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+            .preferredColorScheme(.light)
     }
 }
