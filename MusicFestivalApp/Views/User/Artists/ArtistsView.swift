@@ -13,18 +13,25 @@ struct ArtistsView: View {
     
     var body: some View {
         VStack {
+            Button("ajout artiste"){
+                Task{
+                    await artistVM.postArtist()
+                }
+            }
             NavigationView{
                 switch artistVM.state {
                 case .success:
                     List(artistVM.artists, id:\.id){ artist in
                         ArtistCellView(artist: artist)
-                    }.navigationTitle("Artists")
-                        .refreshable {
+                    }
+                    .navigationTitle("Artists")
+                    .refreshable{
+                        Task{
                             await artistVM.getArtists()
-                            print("refresh api")
                         }
+                    }
                 case .loading :
-                    ProgressView()
+                    LoadingView(text: "Fetching Artists")
                 default:
                     EmptyView()
                 }
@@ -37,7 +44,7 @@ struct ArtistsView: View {
                    presenting: artistVM.state) {detail in
                 Button("Retry"){
                     Task {
-                      await artistVM.getArtists()
+                        await artistVM.getArtists()
                     }
                 }
             } message : {detail in

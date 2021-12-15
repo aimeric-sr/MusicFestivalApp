@@ -8,8 +8,9 @@
 import Foundation
 
 struct Artist : Codable {
-    let id: UUID
+    let id: UUID?
     let name: String
     let nationality: String
     let music_styles: String
+
 }

@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var loginVM = LoginViewModelImpl()
-    @StateObject private var artistListVM = ArtistListViewModel(service: ArtistService())
+    @StateObject private var loginVM = LoginViewModel(service: AuthService())
     
     var body: some View {
         VStack(){
@@ -25,7 +24,9 @@ struct LoginView: View {
                 
                 HStack(spacing: 60){
                     Button("login"){
-                        loginVM.login()
+                        Task{
+                            await loginVM.login()
+                        }
                     }.frame(width: 100, height: 40)
                         .background(.blue)
                         .cornerRadius(10)
