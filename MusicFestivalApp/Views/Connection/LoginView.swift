@@ -49,7 +49,7 @@ struct LoginView: View {
                             )
                     }.padding([.leading, .trailing])
                 }
-                
+                //for redirecting to the good view
                 Group{
                     if(loginVM.roleName == "ADMIN" && loginVM.isAuthenticated){
                         NavigationLink(destination: AdminHomeView().navigationBarBackButtonHidden(true), isActive: $loginVM.isAuthenticated) { EmptyView() }
