@@ -33,22 +33,24 @@ struct LoginView: View {
                             Text("Login")
                                 .foregroundColor(.white)
                         )
-                }.padding().disabled(!loginVM.isFormValid)
+                }.padding()
                 
-                Button(action : {
-                    loginVM.createAccountView.toggle()
-                }){
-                    RoundedRectangle(cornerRadius: 10)
-                        .frame(height: 60)
-                        .overlay(
-                            Text("Create Account")
-                                .foregroundColor(.white)
-                        )
-                }.padding([.leading, .trailing])
+                NavigationLink(destination: RegisterView(),
+                                isActive: $loginVM.createAccountView) {
+                    Button(action : {
+                        loginVM.createAccountView.toggle()
+                    }){
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(.purple)
+                            .frame(height: 60)
+                            .overlay(
+                                Text("Create Account")
+                                    .foregroundColor(.white)
+                            )
+                    }.padding([.leading, .trailing])
+                }
                 
                 Group{
-                    NavigationLink(destination: CreateAccountView(), isActive: $loginVM.createAccountView) { EmptyView() }
-                    
                     if(loginVM.roleName == "ADMIN" && loginVM.isAuthenticated){
                         NavigationLink(destination: AdminHomeView().navigationBarBackButtonHidden(true), isActive: $loginVM.isAuthenticated) { EmptyView() }
                         
@@ -67,7 +69,6 @@ struct LoginView_Previews: PreviewProvider {
         Group {
             LoginView()
                 .preferredColorScheme(.light)
-                
         }
     }
 }
