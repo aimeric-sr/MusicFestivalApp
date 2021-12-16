@@ -21,6 +21,7 @@
 		A89A1254276B2A260017C7FE /* UserHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A1253276B2A260017C7FE /* UserHomeView.swift */; };
 		A89A1257276B2A3E0017C7FE /* AdminHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A1256276B2A3E0017C7FE /* AdminHomeView.swift */; };
 		A89A1259276B32DC0017C7FE /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A1258276B32DC0017C7FE /* CreateAccountView.swift */; };
+		A89A125B276B44040017C7FE /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A125A276B44040017C7FE /* RegisterViewModel.swift */; };
 		A8E038CE2763D28A009560C9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E038CD2763D28A009560C9 /* LoginView.swift */; };
 		A8E038D22763D6B1009560C9 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E038D12763D6B1009560C9 /* Event.swift */; };
 		A8E038D42763D764009560C9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E038D32763D764009560C9 /* User.swift */; };
@@ -45,6 +46,7 @@
 		A89A1253276B2A260017C7FE /* UserHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeView.swift; sourceTree = "<group>"; };
 		A89A1256276B2A3E0017C7FE /* AdminHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeView.swift; sourceTree = "<group>"; };
 		A89A1258276B32DC0017C7FE /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		A89A125A276B44040017C7FE /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		A8E038CD2763D28A009560C9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A8E038D12763D6B1009560C9 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		A8E038D32763D764009560C9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				A882D4AE27639157000D71F2 /* LoginViewModel.swift */,
 				A882D4B62763AD5B000D71F2 /* ArtistListViewModel.swift */,
+				A89A125A276B44040017C7FE /* RegisterViewModel.swift */,
 			);
 			name = ViewModels;
 			path = "../../../../../../../Downloads/MusicFestivalApp-main/MusicFestivalApp/ViewModels";
@@ -323,6 +326,7 @@
 				A882D4B227639157000D71F2 /* AuthService.swift in Sources */,
 				A882D4B72763AD5B000D71F2 /* ArtistListViewModel.swift in Sources */,
 				A813D015276A749200E89999 /* SecureStore.swift in Sources */,
+				A89A125B276B44040017C7FE /* RegisterViewModel.swift in Sources */,
 				A8E038D42763D764009560C9 /* User.swift in Sources */,
 				A882D4B52763AB5C000D71F2 /* Artist.swift in Sources */,
 				A813D00D2769DD9B00E89999 /* APIConstants.swift in Sources */,

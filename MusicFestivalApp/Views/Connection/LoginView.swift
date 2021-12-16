@@ -12,44 +12,52 @@ struct LoginView: View {
     
     var body: some View {
         NavigationView{
-            VStack(){
-                ZStack{
-                    Form{
-                        Section(header: Text("Se connecter")){
-                            TextField("Username", text: $loginVM.username)
-                        }.padding(10)
-                        Section{
-                            TextField("Password", text: $loginVM.password)
-                        }.padding(10)
-                    }.textInputAutocapitalization(.never)
-                    
-                    HStack(spacing: 60){
-                        Button("login"){
-                            Task{
-                                await loginVM.login()
-                            }
-                        }.frame(width: 150, height: 40)
-                            .background(.blue)
-                            .cornerRadius(10)
-                            .buttonStyle(.plain)
-                        Button("create account"){
-                            //go to create account view
-                        }.frame(width: 150, height: 40)
-                            .background(.blue)
-                            .cornerRadius(10)
-                            .buttonStyle(.plain)
-                    }.frame(maxWidth: .infinity)
-                    
-                }
+            VStack{
+                Form{
+                    Section(header: Text("USERNAME")){
+                        TextField("Username", text: $loginVM.username)
+                    }
+                    Section(header: Text("PASSWORD")){
+                        SecureField("Password", text: $loginVM.password)
+                    }
+                }.textInputAutocapitalization(.never)
                 
-                if(loginVM.roleName == "ADMIN" && loginVM.isAuthenticated){
-                    NavigationLink(destination: AdminHomeView().navigationBarBackButtonHidden(true), isActive: $loginVM.isAuthenticated) { EmptyView() }
+                Button(action : {
+                    Task{
+                        await loginVM.login()
+                    }
+                }){
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(height: 60)
+                        .overlay(
+                            Text("Login")
+                                .foregroundColor(.white)
+                        )
+                }.padding().disabled(!loginVM.isFormValid)
+                
+                Button(action : {
+                    loginVM.createAccountView.toggle()
+                }){
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(height: 60)
+                        .overlay(
+                            Text("Create Account")
+                                .foregroundColor(.white)
+                        )
+                }.padding([.leading, .trailing])
+                
+                Group{
+                    NavigationLink(destination: CreateAccountView(), isActive: $loginVM.createAccountView) { EmptyView() }
                     
+                    if(loginVM.roleName == "ADMIN" && loginVM.isAuthenticated){
+                        NavigationLink(destination: AdminHomeView().navigationBarBackButtonHidden(true), isActive: $loginVM.isAuthenticated) { EmptyView() }
+                        
+                    }
+                    if(loginVM.roleName == "BASIC" && loginVM.isAuthenticated){
+                        NavigationLink(destination: UserHomeView().navigationBarBackButtonHidden(true), isActive: $loginVM.isAuthenticated) { EmptyView() }
+                    }
                 }
-                if(loginVM.roleName == "BASIC" && loginVM.isAuthenticated){
-                    NavigationLink(destination: UserHomeView().navigationBarBackButtonHidden(true), isActive: $loginVM.isAuthenticated) { EmptyView() }
-                }
-            }
+            }.navigationTitle("Login")
         }
     }
 }
@@ -59,6 +67,7 @@ struct LoginView_Previews: PreviewProvider {
         Group {
             LoginView()
                 .preferredColorScheme(.light)
+                
         }
     }
 }
