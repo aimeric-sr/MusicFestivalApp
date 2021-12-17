@@ -10,6 +10,7 @@
 		A813D00D2769DD9B00E89999 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813D00C2769DD9B00E89999 /* APIConstants.swift */; };
 		A813D0122769FC4700E89999 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813D0112769FC4700E89999 /* LoadingView.swift */; };
 		A813D015276A749200E89999 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813D014276A749200E89999 /* SecureStore.swift */; };
+		A81F5668276D070600F7C56F /* GenericAPIMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81F5667276D070600F7C56F /* GenericAPIMethods.swift */; };
 		A882D49C27639110000D71F2 /* MusicFestivalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D49B27639110000D71F2 /* MusicFestivalApp.swift */; };
 		A882D4A027639111000D71F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A882D49F27639111000D71F2 /* Assets.xcassets */; };
 		A882D4A327639111000D71F2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A882D4A227639111000D71F2 /* Preview Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		A813D00C2769DD9B00E89999 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		A813D0112769FC4700E89999 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		A813D014276A749200E89999 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
+		A81F5667276D070600F7C56F /* GenericAPIMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAPIMethods.swift; sourceTree = "<group>"; };
 		A882D49827639110000D71F2 /* MusicFestival.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicFestival.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A882D49B27639110000D71F2 /* MusicFestivalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFestivalApp.swift; sourceTree = "<group>"; };
 		A882D49F27639111000D71F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				A813D00C2769DD9B00E89999 /* APIConstants.swift */,
-				A89A1250276B260A0017C7FE /* JsonWebToken.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -78,6 +79,7 @@
 		A813D00E2769FC2700E89999 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				A81F5666276D06EC00F7C56F /* API */,
 				A813D013276A748100E89999 /* SecureStore */,
 				A813D00F2769FC3200E89999 /* Views */,
 				A813D00B2769DD8900E89999 /* Constants */,
@@ -107,6 +109,15 @@
 				A813D014276A749200E89999 /* SecureStore.swift */,
 			);
 			path = SecureStore;
+			sourceTree = "<group>";
+		};
+		A81F5666276D06EC00F7C56F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A89A1250276B260A0017C7FE /* JsonWebToken.swift */,
+				A81F5667276D070600F7C56F /* GenericAPIMethods.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		A882D48F27639110000D71F2 = {
@@ -331,6 +342,7 @@
 				A882D4B52763AB5C000D71F2 /* Artist.swift in Sources */,
 				A813D00D2769DD9B00E89999 /* APIConstants.swift in Sources */,
 				A8E038D82763D8B6009560C9 /* ArtistsView.swift in Sources */,
+				A81F5668276D070600F7C56F /* GenericAPIMethods.swift in Sources */,
 				A89A1259276B32DC0017C7FE /* RegisterView.swift in Sources */,
 				A8E038D22763D6B1009560C9 /* Event.swift in Sources */,
 				A813D0122769FC4700E89999 /* LoadingView.swift in Sources */,

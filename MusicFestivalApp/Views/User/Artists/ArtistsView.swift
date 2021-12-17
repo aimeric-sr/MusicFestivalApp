@@ -49,7 +49,7 @@ struct ArtistsView: View {
                 }
             } message : {detail in
                 if case let .failed(error) = detail {
-                    Text(error.localizedDescription)
+                    Text(error)
                 }
             }
         }
