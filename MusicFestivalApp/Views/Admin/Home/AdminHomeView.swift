@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct AdminHomeView: View {
+    @State private var selection: Tab = .artists
+
+     enum Tab {
+         case artists
+         case events
+     }
+    
     var body: some View {
-        Text("Admin Home")
+        TabView(selection: $selection) {
+                    ArtistsView()
+                        .tabItem {
+                            Label("Artists", systemImage: "star")
+                        }
+                        .tag(Tab.artists)
+
+                    ArtistsView()
+                        .tabItem {
+                            Label("Events", systemImage: "list.bullet")
+                        }
+                        .tag(Tab.events)
+                }
     }
 }
 

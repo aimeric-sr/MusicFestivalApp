@@ -11,6 +11,8 @@
 		A813D0122769FC4700E89999 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813D0112769FC4700E89999 /* LoadingView.swift */; };
 		A813D015276A749200E89999 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813D014276A749200E89999 /* SecureStore.swift */; };
 		A81F5668276D070600F7C56F /* GenericAPIMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81F5667276D070600F7C56F /* GenericAPIMethods.swift */; };
+		A826BEA2276E70660025A673 /* ArtistListAdminVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826BEA1276E70660025A673 /* ArtistListAdminVM.swift */; };
+		A826BEA5276E71440025A673 /* ArtistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826BEA4276E71440025A673 /* ArtistViewModel.swift */; };
 		A882D49C27639110000D71F2 /* MusicFestivalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D49B27639110000D71F2 /* MusicFestivalApp.swift */; };
 		A882D4A027639111000D71F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A882D49F27639111000D71F2 /* Assets.xcassets */; };
 		A882D4A327639111000D71F2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A882D4A227639111000D71F2 /* Preview Assets.xcassets */; };
@@ -36,6 +38,8 @@
 		A813D0112769FC4700E89999 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		A813D014276A749200E89999 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
 		A81F5667276D070600F7C56F /* GenericAPIMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAPIMethods.swift; sourceTree = "<group>"; };
+		A826BEA1276E70660025A673 /* ArtistListAdminVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListAdminVM.swift; sourceTree = "<group>"; };
+		A826BEA4276E71440025A673 /* ArtistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewModel.swift; sourceTree = "<group>"; };
 		A882D49827639110000D71F2 /* MusicFestival.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicFestival.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A882D49B27639110000D71F2 /* MusicFestivalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFestivalApp.swift; sourceTree = "<group>"; };
 		A882D49F27639111000D71F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -120,6 +124,85 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		A826BE98276E6F850025A673 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		A826BE99276E6F8B0025A673 /* Artists */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Artists;
+			sourceTree = "<group>";
+		};
+		A826BE9A276E6FAB0025A673 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				A826BE9E276E701D0025A673 /* Events */,
+				A826BE9D276E70090025A673 /* Artists */,
+				A882D4B62763AD5B000D71F2 /* ArtistListViewModel.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		A826BE9B276E6FB10025A673 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				A826BEA0276E70280025A673 /* Events */,
+				A826BE9F276E70240025A673 /* Artists */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
+		A826BE9C276E6FD60025A673 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A882D4AE27639157000D71F2 /* LoginViewModel.swift */,
+				A89A125A276B44040017C7FE /* RegisterViewModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A826BE9D276E70090025A673 /* Artists */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Artists;
+			sourceTree = "<group>";
+		};
+		A826BE9E276E701D0025A673 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		A826BE9F276E70240025A673 /* Artists */ = {
+			isa = PBXGroup;
+			children = (
+				A826BEA1276E70660025A673 /* ArtistListAdminVM.swift */,
+			);
+			path = Artists;
+			sourceTree = "<group>";
+		};
+		A826BEA0276E70280025A673 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		A826BEA3276E71260025A673 /* StuctureViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A826BEA4276E71440025A673 /* ArtistViewModel.swift */,
+			);
+			path = StuctureViewModel;
+			sourceTree = "<group>";
+		};
 		A882D48F27639110000D71F2 = {
 			isa = PBXGroup;
 			children = (
@@ -162,9 +245,10 @@
 		A882D4AD27639157000D71F2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				A882D4AE27639157000D71F2 /* LoginViewModel.swift */,
-				A882D4B62763AD5B000D71F2 /* ArtistListViewModel.swift */,
-				A89A125A276B44040017C7FE /* RegisterViewModel.swift */,
+				A826BEA3276E71260025A673 /* StuctureViewModel */,
+				A826BE9C276E6FD60025A673 /* Auth */,
+				A826BE9B276E6FB10025A673 /* Admin */,
+				A826BE9A276E6FAB0025A673 /* User */,
 			);
 			name = ViewModels;
 			path = "../../../../../../../Downloads/MusicFestivalApp-main/MusicFestivalApp/ViewModels";
@@ -195,18 +279,18 @@
 			children = (
 				A88658532764DE5B00CAF1CB /* Admin */,
 				A88658522764DE5400CAF1CB /* User */,
-				A882D4B92763BD9F000D71F2 /* Connection */,
+				A882D4B92763BD9F000D71F2 /* Auth */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		A882D4B92763BD9F000D71F2 /* Connection */ = {
+		A882D4B92763BD9F000D71F2 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				A8E038CD2763D28A009560C9 /* LoginView.swift */,
 				A89A1258276B32DC0017C7FE /* RegisterView.swift */,
 			);
-			path = Connection;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		A88658522764DE5400CAF1CB /* User */ = {
@@ -222,6 +306,8 @@
 		A88658532764DE5B00CAF1CB /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				A826BE99276E6F8B0025A673 /* Artists */,
+				A826BE98276E6F850025A673 /* Events */,
 				A89A1255276B2A2C0017C7FE /* Home */,
 			);
 			path = Admin;
@@ -332,6 +418,8 @@
 				A89A1254276B2A260017C7FE /* UserHomeView.swift in Sources */,
 				A8E038CE2763D28A009560C9 /* LoginView.swift in Sources */,
 				A8E038DA2763D9A5009560C9 /* ArtistCellView.swift in Sources */,
+				A826BEA5276E71440025A673 /* ArtistViewModel.swift in Sources */,
+				A826BEA2276E70660025A673 /* ArtistListAdminVM.swift in Sources */,
 				A882D49C27639110000D71F2 /* MusicFestivalApp.swift in Sources */,
 				A8E038D62763D7EF009560C9 /* ArtistService.swift in Sources */,
 				A882D4B227639157000D71F2 /* AuthService.swift in Sources */,

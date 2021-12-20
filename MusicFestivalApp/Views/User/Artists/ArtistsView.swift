@@ -40,7 +40,7 @@ struct ArtistsView: View {
                 await artistVM.getArtists()
             }
             .alert("Error",
-                   isPresented: $artistVM.hasError,
+                   isPresented:  $artistVM.hasError,
                    presenting: artistVM.state) {detail in
                 Button("Retry"){
                     Task {

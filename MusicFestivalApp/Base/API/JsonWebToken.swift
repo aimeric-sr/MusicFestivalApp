@@ -1,10 +1,3 @@
-//
-//  JsonWebToken.swift
-//  MusicFestival
-//
-//  Created by Aimeric Sorin on 16/12/2021.
-//
-
 import Foundation
 
 struct JsonWebToken {

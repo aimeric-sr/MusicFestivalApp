@@ -11,7 +11,7 @@ import SwiftUI
 struct MusicFestivalApp: App {
     var body: some Scene {
         WindowGroup {
-            ArtistsView()
+            LoginView()
         }
     }
 }

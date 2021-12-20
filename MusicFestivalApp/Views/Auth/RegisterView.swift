@@ -1,17 +1,11 @@
-//
-//  CreateAccountView.swift
-//  MusicFestival
-//
-//  Created by Aimeric Sorin on 16/12/2021.
-//
-
 import SwiftUI
 
 struct RegisterView: View {
     @StateObject private var registerVM = RegisterViewModel(service: AuthService())
     
     var body: some View {
-        NavigationView{
+
+            
             VStack{
                 Form{
                     Section(header: Text("USERNAME")){
@@ -48,21 +42,22 @@ struct RegisterView: View {
                         await registerVM.register()
                         print("kljfs")
                     }
-                }){
+                },label: {
                     RoundedRectangle(cornerRadius: 10)
                         .frame(height: 60)
                         .overlay(
                             Text("Register")
                                 .foregroundColor(.white)
                         )
-                }.padding()
+                }).padding()
+                
+            
                     .disabled(!registerVM.isRegisterComplete)
                 
-                Group{
-                    //redirection views
-                }
+                    
             }.navigationTitle("Register")
-        }
+            
+        
     }
 }
 
