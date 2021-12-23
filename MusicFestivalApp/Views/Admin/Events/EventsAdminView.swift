@@ -15,7 +15,7 @@ struct EventsAdminView: View {
                 switch eventVM.state {
                 case .success:
                     List(eventVM.events, id:\.id){ event in
-                        EventCellAdminView(event: event)
+                        EventCellAdminView()
                     }
                     .refreshable{
                         Task{

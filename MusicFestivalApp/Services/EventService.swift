@@ -47,6 +47,7 @@ struct EventService : EventServiceProt {
             }
         }catch {
             print(error)
+            NSLog(error.localizedDescription)
             throw error
             
             //throw GenericServiceError.serverUnreachable

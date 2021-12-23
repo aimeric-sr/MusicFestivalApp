@@ -8,25 +8,13 @@
 import SwiftUI
 
 struct EventCellAdminView: View {
-    var event : EventViewModel
     var body: some View {
-        HStack{
-            Text("\(event.name)")
-                .padding()
-                .fixedSize()
-            Spacer()
-            VStack{
-                Text("\(event.finishDate)")
-                    .padding([.bottom, .top])
-            }
-        }
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 struct EventCellAdminView_Previews: PreviewProvider {
     static var previews: some View {
-        EventCellAdminView(event: EventViewModel(event: Event.dummyData[1]))
-            
-            .previewLayout(.sizeThatFits)
+        EventCellAdminView().previewLayout(.sizeThatFits)
     }
 }
