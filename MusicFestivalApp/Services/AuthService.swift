@@ -5,20 +5,22 @@
 //  Created by Aimeric Sorin on 10/12/2021.
 //
 
-enum AuthenticationError : Error {
+enum AuthServiceError : Error {
+    //case serverUnreachable
+    case badFormatResponse
     case invalidCredentials
-    case custom(errorMessage: String)
-}
-
-enum NetworkError : Error {
-    case invalidURL
-    case noData
-    case decodingError
+    case internalServerError
+    case unknowStatusCodeError(statusCode: Int)
 }
 
 struct LoginRequestBody : Codable {
     let username: String
     let password: String
+}
+
+struct LoginResponseBody : Codable {
+    let accessToken: String?
+    let refreshToken: String?
 }
 
 struct RegisterRequestBody : Codable {
@@ -27,55 +29,65 @@ struct RegisterRequestBody : Codable {
     let email: String
 }
 
-struct LoginResponse : Codable {
-    let accessToken: String?
-    let refreshToken: String?
-}
-
 import Foundation
 
 protocol AuthServiceProt {
-    func login(username: String, password: String) async throws -> LoginResponse
+    func login(username: String, password: String) async throws -> LoginResponseBody
     func register(username: String, password: String, email: String) async throws -> Void
 }
 
 final class AuthService : AuthServiceProt{
-    enum AuthServiceError : Error {
-        case failed
-        case failedToDecode
-        case invalidStatusCode
-    }
-    
-    func login(username: String, password: String) async throws -> LoginResponse {
-        let url = URL(string: APIConstants.baseURL.appending("/auth/login"))!
-        var request = URLRequest(url: url)
+    func login(username: String, password: String) async throws -> LoginResponseBody {
+        let loginBody = LoginRequestBody(username: username, password: password)
+        var request = URLRequest(url: URL(string: APIConstants.baseURL.appending("/auth/login"))!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let loginBody = LoginRequestBody(username: username, password: password)
-        request.httpBody = try? JSONEncoder().encode(loginBody)
-        let (data, response) = try await URLSession.shared.data(for: request)
-        guard let response = response as? HTTPURLResponse,
-              response.statusCode == 200 else {
-                  throw AuthServiceError.invalidStatusCode
-              }
-        let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
-        return loginResponse
+        request.httpBody = try JSONEncoder().encode(loginBody)
+        do{
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let response = response as? HTTPURLResponse else {
+                throw AuthServiceError.badFormatResponse
+            }
+            switch response.statusCode {
+            case 200:
+                return try JSONDecoder().decode(LoginResponseBody.self, from: data)
+            case 404:
+                throw AuthServiceError.invalidCredentials
+            case 500:
+                throw AuthServiceError.internalServerError
+            default:
+                throw AuthServiceError.unknowStatusCodeError(statusCode: response.statusCode)
+            }
+        }catch {
+            throw error
+            //throw GenericServiceError.serverUnreachable
+        }
     }
     
     func register(username: String, password: String, email: String) async throws -> Void {
-        let url = URL(string: APIConstants.baseURL.appending("/auth/register"))!
-        var request = URLRequest(url: url)
+        let registerBody = RegisterRequestBody(username: username, password: password, email: email)
+        var request = URLRequest(url: URL(string: APIConstants.baseURL.appending("/auth/register"))!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let registerBody = RegisterRequestBody(username: username, password: password, email: email)
-        request.httpBody = try? JSONEncoder().encode(registerBody)
-        let (_, response) = try await URLSession.shared.data(for: request)
-        guard let response = response as? HTTPURLResponse,
-              response.statusCode == 201 else {
-                  throw AuthServiceError.invalidStatusCode
-              }
-        print(response.statusCode)
-        return
+        request.httpBody = try JSONEncoder().encode(registerBody)
+        do{
+            let (_, response) = try await URLSession.shared.data(for: request)
+            guard let response = response as? HTTPURLResponse else {
+                throw AuthServiceError.badFormatResponse
+            }
+            switch response.statusCode {
+            case 201:
+                return
+            case 500:
+                throw AuthServiceError.internalServerError
+            default:
+                throw AuthServiceError.unknowStatusCodeError(statusCode: response.statusCode)
+            }
+        }catch {
+            throw error
+            //throw GenericServiceError.serverUnreachable
+        }
+        
     }
     
 }

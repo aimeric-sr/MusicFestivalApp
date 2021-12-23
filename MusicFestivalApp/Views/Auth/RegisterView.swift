@@ -4,8 +4,6 @@ struct RegisterView: View {
     @StateObject private var registerVM = RegisterViewModel(service: AuthService())
     
     var body: some View {
-
-            
             VStack{
                 Form{
                     Section(header: Text("USERNAME")){

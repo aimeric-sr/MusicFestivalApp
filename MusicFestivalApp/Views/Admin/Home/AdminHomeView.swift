@@ -17,13 +17,13 @@ struct AdminHomeView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-                    ArtistsView()
+                    ArtistsAdminView()
                         .tabItem {
                             Label("Artists", systemImage: "star")
                         }
                         .tag(Tab.artists)
 
-                    ArtistsView()
+                    EventsAdminView()
                         .tabItem {
                             Label("Events", systemImage: "list.bullet")
                         }

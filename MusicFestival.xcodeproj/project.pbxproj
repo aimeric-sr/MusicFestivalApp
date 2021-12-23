@@ -13,13 +13,17 @@
 		A81F5668276D070600F7C56F /* GenericAPIMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81F5667276D070600F7C56F /* GenericAPIMethods.swift */; };
 		A826BEA2276E70660025A673 /* ArtistListAdminVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826BEA1276E70660025A673 /* ArtistListAdminVM.swift */; };
 		A826BEA5276E71440025A673 /* ArtistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826BEA4276E71440025A673 /* ArtistViewModel.swift */; };
+		A83681222774AE77009BA8F5 /* EventCellAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83681212774AE77009BA8F5 /* EventCellAdminView.swift */; };
+		A851D8D627720B49000E2B0D /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851D8D527720B49000E2B0D /* EventService.swift */; };
+		A851D8D827720BB9000E2B0D /* EventListAdminVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851D8D727720BB9000E2B0D /* EventListAdminVM.swift */; };
+		A851D8DA27720C17000E2B0D /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851D8D927720C17000E2B0D /* EventViewModel.swift */; };
+		A851D8DC27720E29000E2B0D /* EventsAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851D8DB27720E29000E2B0D /* EventsAdminView.swift */; };
 		A882D49C27639110000D71F2 /* MusicFestivalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D49B27639110000D71F2 /* MusicFestivalApp.swift */; };
 		A882D4A027639111000D71F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A882D49F27639111000D71F2 /* Assets.xcassets */; };
 		A882D4A327639111000D71F2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A882D4A227639111000D71F2 /* Preview Assets.xcassets */; };
 		A882D4B127639157000D71F2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D4AE27639157000D71F2 /* LoginViewModel.swift */; };
 		A882D4B227639157000D71F2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D4B027639157000D71F2 /* AuthService.swift */; };
 		A882D4B52763AB5C000D71F2 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D4B42763AB5C000D71F2 /* Artist.swift */; };
-		A882D4B72763AD5B000D71F2 /* ArtistListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D4B62763AD5B000D71F2 /* ArtistListViewModel.swift */; };
 		A89A1251276B260A0017C7FE /* JsonWebToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A1250276B260A0017C7FE /* JsonWebToken.swift */; };
 		A89A1254276B2A260017C7FE /* UserHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A1253276B2A260017C7FE /* UserHomeView.swift */; };
 		A89A1257276B2A3E0017C7FE /* AdminHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A1256276B2A3E0017C7FE /* AdminHomeView.swift */; };
@@ -29,8 +33,8 @@
 		A8E038D22763D6B1009560C9 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E038D12763D6B1009560C9 /* Event.swift */; };
 		A8E038D42763D764009560C9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E038D32763D764009560C9 /* User.swift */; };
 		A8E038D62763D7EF009560C9 /* ArtistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E038D52763D7EF009560C9 /* ArtistService.swift */; };
-		A8E038D82763D8B6009560C9 /* ArtistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E038D72763D8B6009560C9 /* ArtistsView.swift */; };
-		A8E038DA2763D9A5009560C9 /* ArtistCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E038D92763D9A5009560C9 /* ArtistCellView.swift */; };
+		A8E038D82763D8B6009560C9 /* ArtistsAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E038D72763D8B6009560C9 /* ArtistsAdminView.swift */; };
+		A8E038DA2763D9A5009560C9 /* ArtistCellAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E038D92763D9A5009560C9 /* ArtistCellAdminView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,11 @@
 		A81F5667276D070600F7C56F /* GenericAPIMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAPIMethods.swift; sourceTree = "<group>"; };
 		A826BEA1276E70660025A673 /* ArtistListAdminVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListAdminVM.swift; sourceTree = "<group>"; };
 		A826BEA4276E71440025A673 /* ArtistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewModel.swift; sourceTree = "<group>"; };
+		A83681212774AE77009BA8F5 /* EventCellAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCellAdminView.swift; sourceTree = "<group>"; };
+		A851D8D527720B49000E2B0D /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
+		A851D8D727720BB9000E2B0D /* EventListAdminVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListAdminVM.swift; sourceTree = "<group>"; };
+		A851D8D927720C17000E2B0D /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		A851D8DB27720E29000E2B0D /* EventsAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsAdminView.swift; sourceTree = "<group>"; };
 		A882D49827639110000D71F2 /* MusicFestival.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicFestival.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A882D49B27639110000D71F2 /* MusicFestivalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFestivalApp.swift; sourceTree = "<group>"; };
 		A882D49F27639111000D71F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,7 +56,6 @@
 		A882D4AE27639157000D71F2 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A882D4B027639157000D71F2 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A882D4B42763AB5C000D71F2 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
-		A882D4B62763AD5B000D71F2 /* ArtistListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListViewModel.swift; sourceTree = "<group>"; };
 		A89A1250276B260A0017C7FE /* JsonWebToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonWebToken.swift; sourceTree = "<group>"; };
 		A89A1253276B2A260017C7FE /* UserHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeView.swift; sourceTree = "<group>"; };
 		A89A1256276B2A3E0017C7FE /* AdminHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeView.swift; sourceTree = "<group>"; };
@@ -57,8 +65,8 @@
 		A8E038D12763D6B1009560C9 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		A8E038D32763D764009560C9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A8E038D52763D7EF009560C9 /* ArtistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistService.swift; sourceTree = "<group>"; };
-		A8E038D72763D8B6009560C9 /* ArtistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsView.swift; sourceTree = "<group>"; };
-		A8E038D92763D9A5009560C9 /* ArtistCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCellView.swift; sourceTree = "<group>"; };
+		A8E038D72763D8B6009560C9 /* ArtistsAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsAdminView.swift; sourceTree = "<group>"; };
+		A8E038D92763D9A5009560C9 /* ArtistCellAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCellAdminView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +135,8 @@
 		A826BE98276E6F850025A673 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				A851D8DB27720E29000E2B0D /* EventsAdminView.swift */,
+				A83681212774AE77009BA8F5 /* EventCellAdminView.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -134,6 +144,8 @@
 		A826BE99276E6F8B0025A673 /* Artists */ = {
 			isa = PBXGroup;
 			children = (
+				A8E038D72763D8B6009560C9 /* ArtistsAdminView.swift */,
+				A8E038D92763D9A5009560C9 /* ArtistCellAdminView.swift */,
 			);
 			path = Artists;
 			sourceTree = "<group>";
@@ -143,7 +155,6 @@
 			children = (
 				A826BE9E276E701D0025A673 /* Events */,
 				A826BE9D276E70090025A673 /* Artists */,
-				A882D4B62763AD5B000D71F2 /* ArtistListViewModel.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -191,6 +202,7 @@
 		A826BEA0276E70280025A673 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				A851D8D727720BB9000E2B0D /* EventListAdminVM.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -199,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				A826BEA4276E71440025A673 /* ArtistViewModel.swift */,
+				A851D8D927720C17000E2B0D /* EventViewModel.swift */,
 			);
 			path = StuctureViewModel;
 			sourceTree = "<group>";
@@ -250,8 +263,7 @@
 				A826BE9B276E6FB10025A673 /* Admin */,
 				A826BE9A276E6FAB0025A673 /* User */,
 			);
-			name = ViewModels;
-			path = "../../../../../../../Downloads/MusicFestivalApp-main/MusicFestivalApp/ViewModels";
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		A882D4AF27639157000D71F2 /* Services */ = {
@@ -259,9 +271,9 @@
 			children = (
 				A882D4B027639157000D71F2 /* AuthService.swift */,
 				A8E038D52763D7EF009560C9 /* ArtistService.swift */,
+				A851D8D527720B49000E2B0D /* EventService.swift */,
 			);
-			name = Services;
-			path = "../../../../../../../Downloads/MusicFestivalApp-main/MusicFestivalApp/Services";
+			path = Services;
 			sourceTree = "<group>";
 		};
 		A882D4B32763AB3B000D71F2 /* Models */ = {
@@ -332,8 +344,6 @@
 		A8E038CF2763D665009560C9 /* Artists */ = {
 			isa = PBXGroup;
 			children = (
-				A8E038D72763D8B6009560C9 /* ArtistsView.swift */,
-				A8E038D92763D9A5009560C9 /* ArtistCellView.swift */,
 			);
 			path = Artists;
 			sourceTree = "<group>";
@@ -417,26 +427,30 @@
 			files = (
 				A89A1254276B2A260017C7FE /* UserHomeView.swift in Sources */,
 				A8E038CE2763D28A009560C9 /* LoginView.swift in Sources */,
-				A8E038DA2763D9A5009560C9 /* ArtistCellView.swift in Sources */,
+				A8E038DA2763D9A5009560C9 /* ArtistCellAdminView.swift in Sources */,
+				A851D8D627720B49000E2B0D /* EventService.swift in Sources */,
 				A826BEA5276E71440025A673 /* ArtistViewModel.swift in Sources */,
 				A826BEA2276E70660025A673 /* ArtistListAdminVM.swift in Sources */,
 				A882D49C27639110000D71F2 /* MusicFestivalApp.swift in Sources */,
 				A8E038D62763D7EF009560C9 /* ArtistService.swift in Sources */,
 				A882D4B227639157000D71F2 /* AuthService.swift in Sources */,
-				A882D4B72763AD5B000D71F2 /* ArtistListViewModel.swift in Sources */,
 				A813D015276A749200E89999 /* SecureStore.swift in Sources */,
+				A851D8DC27720E29000E2B0D /* EventsAdminView.swift in Sources */,
 				A89A125B276B44040017C7FE /* RegisterViewModel.swift in Sources */,
 				A8E038D42763D764009560C9 /* User.swift in Sources */,
 				A882D4B52763AB5C000D71F2 /* Artist.swift in Sources */,
 				A813D00D2769DD9B00E89999 /* APIConstants.swift in Sources */,
-				A8E038D82763D8B6009560C9 /* ArtistsView.swift in Sources */,
+				A8E038D82763D8B6009560C9 /* ArtistsAdminView.swift in Sources */,
 				A81F5668276D070600F7C56F /* GenericAPIMethods.swift in Sources */,
 				A89A1259276B32DC0017C7FE /* RegisterView.swift in Sources */,
+				A851D8DA27720C17000E2B0D /* EventViewModel.swift in Sources */,
 				A8E038D22763D6B1009560C9 /* Event.swift in Sources */,
+				A851D8D827720BB9000E2B0D /* EventListAdminVM.swift in Sources */,
 				A813D0122769FC4700E89999 /* LoadingView.swift in Sources */,
 				A882D4B127639157000D71F2 /* LoginViewModel.swift in Sources */,
 				A89A1251276B260A0017C7FE /* JsonWebToken.swift in Sources */,
 				A89A1257276B2A3E0017C7FE /* AdminHomeView.swift in Sources */,
+				A83681222774AE77009BA8F5 /* EventCellAdminView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

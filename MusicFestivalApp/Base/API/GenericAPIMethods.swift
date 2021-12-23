@@ -28,7 +28,7 @@ struct GenericAPIMethods {
                 default:
                     throw GenericServiceError.unknowStatusCodeError(statusCode: response.statusCode)
             }
-        } catch {
+        }catch {
             throw error
             //throw GenericServiceError.serverUnreachable
         }
