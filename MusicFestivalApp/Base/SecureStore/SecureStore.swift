@@ -8,12 +8,18 @@
 import Foundation
 import Security
 
+protocol SecureStoreProt {
+    func set(entry: String, forKey key: String) throws
+    func entry(forKey key: String) throws -> String?
+    func removeEntry(forKey key: String) throws
+}
+
 enum SecureStoreError : Error {
     case invalidContent
     case failure(status : OSStatus)
 }
 
-class SecureStore {
+class SecureStore: SecureStoreProt {
     private func setupQueryDictionnary(forKey key: String) throws -> [CFString: Any] {
         guard let keyData = key.data(using: .utf8) else {
             print("Error ! Could not convert the key to the expected format")

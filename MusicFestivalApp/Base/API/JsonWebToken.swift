@@ -1,6 +1,10 @@
 import Foundation
 
-struct JsonWebToken {
+protocol JWTReaderProt {
+    static func decode(jwtToken jwt: String) throws -> [String: Any]
+}
+
+struct JsonWebToken: JWTReaderProt {
     static func decode(jwtToken jwt: String) throws -> [String: Any] {
 
         enum DecodeErrors: Error {

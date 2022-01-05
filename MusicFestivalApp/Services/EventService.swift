@@ -37,7 +37,7 @@ struct EventService : EventServiceProt {
             }
             switch response.statusCode {
                 case 200:
-                return try decoder.decode([Event].self, from: data)
+                    return try decoder.decode([Event].self, from: data)
                 case 401:
                     throw EventServiceError.unauthorizedError
                 case 500:

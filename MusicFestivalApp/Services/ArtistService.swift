@@ -1,48 +1,39 @@
-//
-//  ArtistWebService.swift
-//  MusicFestival
-//
-//  Created by Aimeric Sorin on 10/12/2021.
-//
-
 import Foundation
 
-protocol ArtistServiceProt {
+protocol ArtistServiceProtocol {
     func getArtists(accessToken: String) async throws -> [Artist]
     func postArtist(artist: Artist, jwt: String) async throws -> Void
 }
 
-enum ArtistServiceError : Error {
-    //case serverUnreachable
-    case badFormatResponse
-    case unauthorizedError
-    case internalServerError
-    case unknowStatusCodeError(statusCode: Int)
-}
-
-struct ArtistService : ArtistServiceProt {
+struct ArtistService : ArtistServiceProtocol {
     func getArtists(accessToken: String) async throws -> [Artist] {
-        var request = URLRequest(url: URL(string: APIConstants.baseURL.appending("/artists"))!)
+        guard let url = URL(string: APIConstants.baseURL.appending("/artists")) else {
+            throw APIError.invalidURL
+        }
+        var request = URLRequest(url: url)
         request.setValue("Bearer \(accessToken)",forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
         do{
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let response = response as? HTTPURLResponse else {
-                throw ArtistServiceError.badFormatResponse
+                throw APIError.invalidResponse
             }
             switch response.statusCode {
                 case 200:
+                do {
                     return try JSONDecoder().decode([Artist].self, from: data)
-                case 401:
-                    throw ArtistServiceError.unauthorizedError
+                } catch  {
+                    throw APIError.invalidData
+                }
+                case 403:
+                    throw APIError.invalidToken
                 case 500:
-                    throw ArtistServiceError.internalServerError
+                    throw APIError.internalServerError
                 default:
-                    throw ArtistServiceError.unknowStatusCodeError(statusCode: response.statusCode)
+                    throw APIError.unknowStatusCodeError(statusCode: response.statusCode)
             }
         }catch {
             throw error
-            //throw GenericServiceError.serverUnreachable
         }
     }
     
@@ -54,15 +45,15 @@ struct ArtistService : ArtistServiceProt {
         do{
             let (_, response) = try await URLSession.shared.data(for: request)
             guard let response = response as? HTTPURLResponse else {
-                throw AuthServiceError.badFormatResponse
+                throw APIError.invalidResponse
             }
             switch response.statusCode {
             case 201:
                 return
             case 500:
-                throw AuthServiceError.internalServerError
+                throw APIError.internalServerError
             default:
-                throw AuthServiceError.unknowStatusCodeError(statusCode: response.statusCode)
+                throw APIError.unknowStatusCodeError(statusCode: response.statusCode)
             }
         }catch {
             throw error
