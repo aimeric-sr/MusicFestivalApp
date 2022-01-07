@@ -1,6 +1,6 @@
 import Foundation
 
-enum APIError : Error{
+enum APIError: Error{
     case invalidURL
     case invalidDataSend
     case invalidResponse
@@ -11,7 +11,5 @@ enum APIError : Error{
     case notFound
     case internalServerError
     case unknowStatusCodeError(statusCode: Int)
-    //case unableToComplete
-    //case serverUnreachable
 }
 

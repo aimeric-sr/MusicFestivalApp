@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var loginVM = LoginViewModel(service: AuthService())
+    @StateObject private var loginVM = LoginViewModel(
+        service: AuthService(),
+        keyChain: KeyChainManager(secureStore: SecureStore()))
     
     var body: some View {
         VStack{
@@ -21,10 +23,7 @@ struct LoginView: View {
             }, label: {
                 Text("Login")
                     .frame(maxWidth: .infinity)
-            }).padding()
-            .buttonStyle(.bordered)
-            .tint(.accentColor)
-            .controlSize(.large)
+            }).modifier(StandardTintButtonStyle())
             
             NavigationLink (destination: RegisterView(), label: {
                 RoundedRectangle(cornerRadius: 10)
@@ -46,6 +45,7 @@ struct LoginView: View {
                     NavigationLink(destination: UserTabView().navigationBarBackButtonHidden(true), isActive: $loginVM.isAuthenticated) { EmptyView() }
                 }
             }
+            
         }.navigationTitle("Login")
         .alert(item: $loginVM.alertItem, content: { alertItem in
             Alert(title: alertItem.title,

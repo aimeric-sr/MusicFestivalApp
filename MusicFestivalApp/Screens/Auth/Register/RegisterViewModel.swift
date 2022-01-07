@@ -14,41 +14,35 @@ final class RegisterViewModel : RegisterViewModelProt {
     @Published var alertItem: AlertItem?
     
     private let service: AuthServiceProtocol
+    private let keychain: KeyChainManager
     
-    init(service: AuthServiceProtocol){
+    init(service: AuthServiceProtocol, keychain: KeyChainManager){
         self.service = service
+        self.keychain = keychain
     }
     
     func register() async {
         do {
             try await service.register(username: self.username, password: self.password, email: self.email)
             self.isRegistered = true 
-        }catch{
-            if  let APIError = error as? APIError{
-                switch APIError {
-                case .invalidURL:
-                    alertItem = AlertContext.invalidURL
-                case .invalidDataSend:
-                    alertItem = AlertContext.invalidDataSend
-                case .invalidResponse:
-                    alertItem = AlertContext.invalidResponse
-                case .internalServerError:
-                    alertItem = AlertContext.internalServerError
-                case .unknowStatusCodeError(statusCode: _):
-                    alertItem = AlertContext.unknowStatusCodeError
-                default:
-                    break
-                }
-            } else {
-                //generic error
-                alertItem = AlertContext.unknowError
-            }
+        } catch APIError.invalidURL {
+            alertItem = APIAlertContext.invalidURL
+        } catch APIError.invalidDataSend {
+            alertItem = APIAlertContext.invalidDataSend
+        } catch APIError.invalidResponse {
+            alertItem = APIAlertContext.invalidResponse
+        }  catch APIError.internalServerError {
+            alertItem = APIAlertContext.internalServerError
+        }  catch APIError.unknowStatusCodeError {
+            alertItem = APIAlertContext.unknowStatusCodeError
+        } catch {
+            alertItem = APIAlertContext.unknowError
         }
     }
     
     //validation data form
     func passwordsMatch() -> Bool {
-        self.password == self.confirmPassword
+        return self.password == self.confirmPassword
     }
     
     var isRegisterComplete: Bool {

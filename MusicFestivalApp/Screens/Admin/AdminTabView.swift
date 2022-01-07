@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct AdminTabView: View {
-    @EnvironmentObject var userInfo: UserSensitiveData
     
     var body: some View {
         TabView {

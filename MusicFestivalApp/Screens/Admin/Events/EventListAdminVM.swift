@@ -32,20 +32,20 @@ final class EventListAdminVM : EventListAdminVMProt {
             let accessToken = try secureStore.entry(forKey: "accessToken")!
             self.events = try await service.getEvents(accessToken: accessToken).map(EventViewModel.init)
             self.state = .success
-        } catch EventServiceError.badFormatResponse {
+        } catch APIError.invalidResponse {
             self.state = .failed(error: "Bad HTTP Format Response Admin")
             self.hasError = true
             NSLog("Bad HTTP Format Response")
-        } catch EventServiceError.unauthorizedError {
+        } catch APIError.invalidToken {
             self.state = .failed(error: "Unauthorized Request")
             print("server request token invalid Admin")
             self.hasError = true
             NSLog("Unauthorized Request")
-        } catch EventServiceError.internalServerError {
+        } catch APIError.internalServerError {
             self.state = .failed(error: "Internal Server Error Admin")
             self.hasError = true
             NSLog("Internal Server Error")
-        } catch EventServiceError.unknowStatusCodeError(let statusCode) {
+        } catch APIError.unknowStatusCodeError(let statusCode) {
             self.state = .failed(error: "Unknown Status Code Response : \(statusCode) Admin")
             self.hasError = true
             NSLog("Unknown Status Code Response : \(statusCode)")

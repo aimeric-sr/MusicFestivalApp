@@ -1,10 +1,3 @@
-//
-//  Artist.swift
-//  MusicFestivalApp
-//
-//  Created by Aimeric Sorin on 10/12/2021.
-//
-
 import Foundation
 
 struct Artist : Codable {
@@ -13,6 +6,12 @@ struct Artist : Codable {
     let nationality: String
     let music_styles: String
 
+}
+
+struct PostArtistRequestBody : Codable {
+    let name: String
+    let nationality: String
+    let music_styles: String
 }
 
 extension Artist {

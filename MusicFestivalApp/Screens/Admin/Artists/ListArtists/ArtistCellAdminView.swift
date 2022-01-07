@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ArtistCellAdminView: View {
+    @Binding var selectedArtist : ArtistViewModel?
     @Binding var isShowingModifyArtist : Bool
     @Binding var isShowingDeleteArtist : Bool
     var artist: ArtistViewModel
@@ -18,6 +19,9 @@ struct ArtistCellAdminView: View {
             }
         }
         .padding()
+        .onTapGesture {
+           
+        }
         .swipeActions(edge: .leading,allowsFullSwipe: true){
             Button(action:{
                     isShowingModifyArtist.toggle()
@@ -27,6 +31,7 @@ struct ArtistCellAdminView: View {
             }).tint(.green)
         }.swipeActions(edge: .trailing, allowsFullSwipe: true){
             Button(action:{
+                    selectedArtist = self.artist
                     isShowingDeleteArtist.toggle()
                 },
                    label: {
@@ -38,6 +43,6 @@ struct ArtistCellAdminView: View {
 
 struct ArtistCellAdminView_Previews: PreviewProvider {
     static var previews: some View {
-        ArtistCellAdminView(isShowingModifyArtist: .constant(false), isShowingDeleteArtist: .constant(false), artist: ArtistViewModel(artist: Artist.dummyData[0])).previewLayout(.sizeThatFits)
+        ArtistCellAdminView(selectedArtist: .constant(nil), isShowingModifyArtist: .constant(false), isShowingDeleteArtist: .constant(false), artist: ArtistViewModel(artist: Artist.dummyData[0])).previewLayout(.sizeThatFits)
     }
 }

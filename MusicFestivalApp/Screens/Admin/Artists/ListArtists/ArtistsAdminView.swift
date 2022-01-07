@@ -1,18 +1,31 @@
 import SwiftUI
 
 struct ArtistsAdminView: View {
-    @EnvironmentObject var userInfo: UserSensitiveData
-    @StateObject private var artistVM = ArtistListAdminVM(service: ArtistService(),authService: AuthService(), userSensitiveData: UserSensitiveData(secureStore: SecureStore()))
+    @EnvironmentObject var userInfo: KeyChainManager
+    @StateObject private var artistVM = ArtistListAdminVM(
+        service: ArtistService(),
+        authService: AuthService(),
+        keychain: KeyChainManager(secureStore: SecureStore()))
     
     var body: some View {
         ZStack {
             VStack {
-                List(artistVM.artists, id:\.id){ artist in
-                    ArtistCellAdminView(
-                        isShowingModifyArtist: $artistVM.isShowingModifyArtist,
-                        isShowingDeleteArtist: $artistVM.isShowingDeleteArtist,
-                        artist: artist)
-                }.task {
+                Button {
+                    artistVM.isShowingAddArtist.toggle()
+                } label: {
+                    Text("Add artist")
+                }
+
+                List(){
+                    ForEach(artistVM.artists, id:\.id){ artist in
+                        ArtistCellAdminView(
+                            selectedArtist: $artistVM.selectedArtist,
+                            isShowingModifyArtist: $artistVM.isShowingModifyArtist,
+                            isShowingDeleteArtist: $artistVM.isShowingDeleteArtist,
+                            artist: artist)
+                    }
+                }
+                .task {
                     await artistVM.getArtists()
                 }
                 .refreshable{
@@ -24,6 +37,20 @@ struct ArtistsAdminView: View {
             .navigationTitle("Artists")
 
             if artistVM.isLoading { LoadingView(text: "Fetching Artists") }
+        }
+        .sheet(isPresented: $artistVM.isShowingAddArtist, content: {
+            AddArtistView(artistVM: AddArtistViewModel(
+                service: ArtistService(),
+                authService: AuthService(),
+                keychain: KeyChainManager(secureStore: SecureStore())), isShowingAddArtist: $artistVM.isShowingAddArtist)
+        })
+        .confirmationDialog("Are you sure ?", isPresented: $artistVM.isShowingDeleteArtist, titleVisibility: .visible){
+            Button("Delete", role: .destructive){
+                Task {
+                    await artistVM.deleteArtist()
+                    await artistVM.getArtists()
+                }
+            }
         }
         .alert(item: $artistVM.alertItem, content: { alertItem in
             Alert(title: alertItem.title,

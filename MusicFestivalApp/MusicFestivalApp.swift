@@ -3,27 +3,23 @@ import SwiftUI
 @main
 struct MusicFestivalApp: App {
     
-    var userInfo = UserSensitiveData(secureStore: SecureStore())
+    var keyChainData = KeyChainManager(secureStore: SecureStore())
     
     init() {
-        do {
-            try userInfo.checkFirstRun()
-        } catch {
-            print(error.localizedDescription)
-        }
+        keyChainData.checkFirstRun()
     }
     
     var body: some Scene {
         WindowGroup {
             NavigationView() {
-                if (userInfo.isAdmin()){
-                    AdminTabView().environmentObject(userInfo)
+                if (keyChainData.isAdmin()){
+                    AdminTabView()
                 }
-                else if (userInfo.isBasic()){
-                    UserTabView().environmentObject(userInfo)
+                else if (keyChainData.isBasic()){
+                    UserTabView()
                 }
                 else {
-                    LoginView().environmentObject(userInfo)
+                    LoginView()
                 }
             }
         }

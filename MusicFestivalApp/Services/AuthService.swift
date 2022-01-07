@@ -1,29 +1,5 @@
 import Foundation
 
-struct LoginRequestBody : Codable {
-    let username: String
-    let password: String
-}
-
-struct LoginResponseBody : Codable {
-    let accessToken: String?
-    let refreshToken: String?
-}
-
-struct RegisterRequestBody : Codable {
-    let username: String
-    let password: String
-    let email: String
-}
-
-struct RefreshTokenRequestBody : Codable {
-    let refreshToken: String
-}
-
-struct RefreshTokenResponseBody : Codable {
-    let accessToken: String
-}
-
 protocol AuthServiceProtocol {
     func login(username: String, password: String) async throws -> LoginResponseBody
     func register(username: String, password: String, email: String) async throws -> Void

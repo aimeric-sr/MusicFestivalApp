@@ -1,22 +1,7 @@
-//
-//  ArtistWebService.swift
-//  MusicFestival
-//
-//  Created by Aimeric Sorin on 10/12/2021.
-//
-
 import Foundation
 
 protocol EventServiceProt {
     func getEvents(accessToken: String) async throws -> [Event]
-}
-
-enum EventServiceError : Error {
-    //case serverUnreachable
-    case badFormatResponse
-    case unauthorizedError
-    case internalServerError
-    case unknowStatusCodeError(statusCode: Int)
 }
 
 struct EventService : EventServiceProt {
@@ -33,24 +18,20 @@ struct EventService : EventServiceProt {
         do{
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let response = response as? HTTPURLResponse else {
-                throw EventServiceError.badFormatResponse
+                throw APIError.invalidResponse
             }
             switch response.statusCode {
                 case 200:
                     return try decoder.decode([Event].self, from: data)
                 case 401:
-                    throw EventServiceError.unauthorizedError
+                throw APIError.invalidToken
                 case 500:
-                    throw EventServiceError.internalServerError
+                    throw APIError.internalServerError
                 default:
-                    throw EventServiceError.unknowStatusCodeError(statusCode: response.statusCode)
+                    throw APIError.unknowStatusCodeError(statusCode: response.statusCode)
             }
         }catch {
-            print(error)
-            NSLog(error.localizedDescription)
             throw error
-            
-            //throw GenericServiceError.serverUnreachable
         }
     }
 }

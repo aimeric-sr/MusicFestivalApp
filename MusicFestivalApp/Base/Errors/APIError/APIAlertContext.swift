@@ -1,14 +1,6 @@
 import SwiftUI
 
-struct AlertItem : Identifiable {
-    let id = UUID()
-    let title: Text
-    let message: Text
-    let dismissButton : Alert.Button
-}
-
-struct AlertContext {
-    //Mark: - Network Alerts
+struct APIAlertContext {
     static let invalidURL = AlertItem(
         title: Text("Server Error"),
         message: Text("Unable to contact the server, please try to contact support."),
@@ -64,8 +56,3 @@ struct AlertContext {
         message: Text("Someting unexpected happened, please check your internet connection and contact the support."),
         dismissButton: .default(Text("OK")))
 }
-
-//    static let serverUnreachable = AlertItem(
-//        title: Text("Server Error"),
-//        message: Text("Unable to complet your request at this time, the server is unreachable, contact support."),
-//        dismissButton: .default(Text("OK")))

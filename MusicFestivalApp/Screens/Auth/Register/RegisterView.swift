@@ -1,8 +1,10 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @EnvironmentObject var userInfo: UserSensitiveData
-    @StateObject private var registerVM = RegisterViewModel(service: AuthService())
+    @EnvironmentObject var userInfo: KeyChainManager
+    @StateObject private var registerVM = RegisterViewModel(
+        service: AuthService(),
+        keychain: KeyChainManager(secureStore: SecureStore()))
     
     var body: some View {
         VStack{
@@ -16,12 +18,14 @@ struct RegisterView: View {
                     }
                 }
                 Section(header: Text("PASSWORD")){
-                    SecureField("Password", text: $registerVM.password)
+                    SecureField("Password",
+                                text: $registerVM.password)
                     if(!registerVM.password.isValidPassword){
                         Text(registerVM.passwordPrompt)
                             .font(.caption)
                     }
-                    SecureField("Confirm Password", text: $registerVM.confirmPassword)
+                    SecureField("Confirm Password",
+                                text: $registerVM.confirmPassword)
                     if(!registerVM.passwordsMatch()){
                         Text(registerVM.confirmPwPrompt)
                             .font(.caption)
@@ -44,10 +48,7 @@ struct RegisterView: View {
                 Text("Register")
                     .frame(maxWidth: .infinity)
             }).disabled(!registerVM.isRegisterComplete)
-            .padding()
-            .buttonStyle(.bordered)
-            .tint(.accentColor)
-            .controlSize(.large)
+            .modifier(StandardTintButtonStyle())
             
             if(registerVM.isRegistered){
                 NavigationLink(destination: LoginView(), isActive: $registerVM.isRegistered) { EmptyView() }

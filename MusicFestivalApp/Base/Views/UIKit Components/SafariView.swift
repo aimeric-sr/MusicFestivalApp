@@ -1,11 +1,3 @@
-//
-//  SafariView.swift
-//  Apple-Frameworks
-//
-//  Created by Aimeric Sorin on 25/12/2021.
-//
-
-import Foundation
 import SwiftUI
 import SafariServices
 

@@ -4,7 +4,7 @@ protocol JWTReaderProt {
     static func decode(jwtToken jwt: String) throws -> [String: Any]
 }
 
-struct JsonWebToken: JWTReaderProt {
+struct JWTReader: JWTReaderProt {
     static func decode(jwtToken jwt: String) throws -> [String: Any] {
 
         enum DecodeErrors: Error {

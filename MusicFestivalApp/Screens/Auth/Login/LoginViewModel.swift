@@ -2,7 +2,6 @@ import Foundation
 
 protocol LoginViewModelProt: ObservableObject {
     func login() async
-    //func signOut() async
 }
 
 @MainActor
@@ -16,53 +15,55 @@ final class LoginViewModel : LoginViewModelProt {
     @Published var alertItem: AlertItem?
     
     private let service: AuthServiceProtocol
+    private let keyChain: KeyChainManager
     
-    init(service: AuthServiceProtocol){
+    init (service: AuthServiceProtocol, keyChain: KeyChainManager){
         self.service = service
+        self.keyChain = keyChain
     }
     
     func login() async {
         do {
+            
             let loginResponse = try await service.login(username: username, password: password)
-            let secureStore = SecureStore()
-            let payload = try JsonWebToken.decode(jwtToken: loginResponse.accessToken!)
-            let role = payload["role"]!
+            guard let accessToken = loginResponse.accessToken else {
+                alertItem = APIAlertContext.invalidData
+                return
+            }
+            guard let refreshToken = loginResponse.refreshToken else {
+                alertItem = APIAlertContext.invalidData
+                return
+            }
+            let payload = try JWTReader.decode(jwtToken: accessToken)
+            guard let role = payload["role"] else {
+                alertItem = APIAlertContext.invalidData
+                return
+            }
             self.roleName = String(describing: role)
-            try secureStore.set(entry: loginResponse.accessToken!, forKey: "accessToken")
-            try secureStore.set(entry: loginResponse.refreshToken!, forKey: "refreshToken")
+            try keyChain.setAccessToken(accessTokenInput: accessToken)
+            try keyChain.setRefreshToken(refreshTokenInput: refreshToken)
             self.isAuthenticated = true
+            
         } catch APIError.invalidURL {
-            alertItem = AlertContext.invalidURL
+            alertItem = APIAlertContext.invalidURL
         } catch APIError.invalidDataSend {
-            alertItem = AlertContext.invalidDataSend
+            alertItem = APIAlertContext.invalidDataSend
         } catch APIError.invalidResponse {
-            alertItem = AlertContext.invalidResponse
+            alertItem = APIAlertContext.invalidResponse
         } catch APIError.invalidData {
-            alertItem = AlertContext.invalidData
+            alertItem = APIAlertContext.invalidData
         } catch APIError.invalidUsername {
-            alertItem = AlertContext.invalidUsername
+            alertItem = APIAlertContext.invalidUsername
         } catch APIError.invalidPassword {
-            alertItem = AlertContext.invalidPassword
+            alertItem = APIAlertContext.invalidPassword
         } catch APIError.invalidToken {
-            alertItem = AlertContext.invalidToken
+            alertItem = APIAlertContext.invalidToken
         } catch APIError.internalServerError {
-            alertItem = AlertContext.internalServerError
+            alertItem = APIAlertContext.internalServerError
         } catch APIError.unknowStatusCodeError {
-            alertItem = AlertContext.unknowStatusCodeError
+            alertItem = APIAlertContext.unknowStatusCodeError
         } catch {
-            alertItem = AlertContext.unknowError
+            alertItem = APIAlertContext.unknowError
         }
     }
-    
-//    func signOut(){
-//        let secureStore = SecureStore()
-//        do{
-//            try secureStore.removeEntry(forKey: "accessToken")
-//            try secureStore.removeEntry(forKey: "refreshToken")
-//        }catch{
-//            self.hasError = true
-//        }
-//        self.isAuthenticated = false
-//    }
-    
 }
